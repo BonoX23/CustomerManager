@@ -17,6 +17,7 @@ DocumentLayout.json
 *.bin
 *.cache
 *.AssemblyInfo.cs
+obj/
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -406,3 +407,8 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/.vs/CustomerManager/v17/.suo
+/Core/Application/Application/obj/Debug/net6.0/Application.AssemblyInfo.cs
+/Core/Application/Application/obj/Debug/net6.0/Application.AssemblyInfoInputs.cache
+/.vs/CustomerManager/DesignTimeBuild/.dtbcache.v2
+/.vs/CustomerManager/v17/DocumentLayout.json
