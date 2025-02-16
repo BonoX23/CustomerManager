@@ -10,6 +10,14 @@
 *.userosscache
 *.sln.docstates
 
+# Arquivos e diretórios adicionais para ignorar
+.vs/
+*.v2
+DocumentLayout.json
+*.bin
+*.cache
+*.AssemblyInfo.cs
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
