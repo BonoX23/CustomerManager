@@ -17,8 +17,9 @@ namespace CustomerManager.Configuration
 
             #region AppServices
 
-            services.AddScoped<IAuthManager, AuthService>();
-            services.AddScoped<ICustomerManager, CustomerService>();
+            services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped<IAddressService, AddressService>();
 
             #endregion
 

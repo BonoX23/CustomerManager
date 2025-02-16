@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace Application
 {
-    public class AuthService : IAuthManager
+    public class AuthService : IAuthService
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;

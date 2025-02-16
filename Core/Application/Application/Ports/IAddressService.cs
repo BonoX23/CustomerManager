@@ -3,7 +3,7 @@ using Application.Responses;
 
 namespace Application.Ports
 {
-    public interface IAddressManager
+    public interface IAddressService
     {
         Task<Tuple<string>> AddAsync(int userId, int customerId, CreateAddressRequest request);
         Task UpdateAsync(int userId, int customerId, int addressId, CreateAddressRequest request);

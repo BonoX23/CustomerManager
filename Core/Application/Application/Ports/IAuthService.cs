@@ -3,7 +3,7 @@ using Application.Responses;
 
 namespace Application.Ports
 {
-    public interface IAuthManager
+    public interface IAuthService
     {
         Task<UserResponse> AuthenticateAsync(CreateUserRequest createUserRequest);
         Task UpdatePasswordAsync(int userId, CreateUserRequest createUserRequest);

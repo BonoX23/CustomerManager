@@ -3,7 +3,7 @@ using Application.Responses;
 
 namespace Application.Ports
 {
-    public interface ICustomerManager
+    public interface ICustomerService
     {
         Task<Tuple<string>> AddAsync(CreateCustomerRequest customerRequest);
         Task UpdateAsync(int userId, int customerId, CreateCustomerRequest customerRequest);

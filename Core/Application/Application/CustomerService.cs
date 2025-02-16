@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Application
 {
-    public class CustomerService : ICustomerManager
+    public class CustomerService : ICustomerService
     {
         private readonly ICustomerRepository _repository;
         private readonly UserManager<User> _userManager;

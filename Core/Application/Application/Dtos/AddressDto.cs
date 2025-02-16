@@ -15,17 +15,17 @@ namespace Application.Dtos
 
         public static Address MapToEntity(AddressDto dto)
         {
-            return new Address
+            var address = new Address(dto.Place, dto.Neighborhood, dto.City, dto.State, dto.ZipCode, dto.CustomerId)
             {
-                Id = dto.Id,
-                Place = dto.Place,
-                Neighborhood = dto.Neighborhood,
-                City = dto.City,
-                State = dto.State,
-                ZipCode = dto.ZipCode,
-                CustomerId = dto.CustomerId,
-                Customer = dto.CustomerDto != null ? CustomerDto.MapToEntity(dto.CustomerDto) : null
+                Id = dto.Id
             };
+
+            if (dto.CustomerDto != null)
+            {
+                address.Customer = CustomerDto.MapToEntity(dto.CustomerDto);
+            }
+
+            return address;
         }
 
         public static AddressDto MapToDto(Address address)
