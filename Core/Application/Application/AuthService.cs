@@ -11,7 +11,6 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Application
 {
@@ -30,7 +29,7 @@ namespace Application
             _configuration = configuration;
 
             _tokenConfigurations = new TokenConfiguration();
-            new ConfigureFromConfigurationOptions<TokenConfiguration>(configuration.GetSection("Jwt")).Configure(_tokenConfigurations);
+            new ConfigureFromConfigurationOptions<TokenConfiguration>(configuration.GetSection("TokenConfigurations")).Configure(_tokenConfigurations);
 
             _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_tokenConfigurations.Key));
         }
