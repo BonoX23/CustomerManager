@@ -40,6 +40,15 @@ namespace Domain.Address
 
         public Address() { }
 
+        public Address(string place, string neighborhood, string city, string state, string zipCode)
+        {
+            Place = place;
+            Neighborhood = neighborhood;
+            City = city;
+            State = state;
+            ZipCode = zipCode;
+        }
+
         public Address(string place, string neighborhood, string city, string state, string zipCode, int customerId)
         {
             Place = place;
@@ -48,7 +57,6 @@ namespace Domain.Address
             State = state;
             ZipCode = zipCode;
             CustomerId = customerId;
-            CreateDate = DateTime.UtcNow;
         }
 
         public void Update(string place, string neighborhood, string city, string state, string zipCode)

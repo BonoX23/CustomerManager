@@ -23,12 +23,18 @@ namespace CustomerManager.Controllers
         /// <param name="customer"></param>
         /// <returns></returns>
         [HttpPost]
-        [Route("customer")]
         [AllowAnonymous]
+        [Route("customer")]
         public async Task<IActionResult> AddCustomer([FromBody] CreateCustomerRequest customer)
         {
             var result = await _service.AddAsync(customer);
-            return Ok(result);
+
+            if (result.Item1 != null)
+            {
+                return BadRequest(new { Message = result.Item1 });
+            }
+
+            return Ok(new { Message = "Cliente criado com sucesso!", LoginCode = result.Item2 });
         }
 
         /// <summary>
@@ -38,10 +44,18 @@ namespace CustomerManager.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("customer/{customerId}")]
-        public async Task<IActionResult> GetCustomerById(int customerId)
+        public IActionResult GetCustomerById(int customerId)
         {
-            var result = await _service.GetByIdAsync(UserLoggedId, customerId);
-            return Ok(result);
+            try
+            {
+                var userId = /* Obtenha o ID do usuário autenticado aqui, por exemplo, via User.Claims */;
+                var result = _service.GetByIdAsync(userId, customerId).Result;
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return NotFound(new { Message = ex.Message });
+            }
         }
 
         /// <summary>

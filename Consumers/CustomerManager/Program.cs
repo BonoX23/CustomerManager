@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models; // Adicione esta linha
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -36,6 +37,12 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
+// Configuração do Swagger
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Minha API", Version = "v1" });
+});
+
 builder.Services.InjectDependencyRegister();
 
 builder.Services.AddControllersWithViews();
@@ -56,6 +63,16 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+// Ativa o middleware para servir o Swagger gerado como um endpoint JSON
+app.UseSwagger();
+
+// Ativa o middleware para servir o Swagger UI (HTML, JS, CSS, etc.),
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Minha API v1");
+    c.RoutePrefix = string.Empty; // Define o Swagger UI na raiz da aplicação (opcional)
+});
 
 app.MapControllerRoute(
     name: "default",
